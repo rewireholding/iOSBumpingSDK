@@ -1,0 +1,11 @@
+framework module BumpingSDK {
+  umbrella header "BumpingSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module BumpingSDK.Swift {
+    header "BumpingSDK-Swift.h"
+    requires objc
+}

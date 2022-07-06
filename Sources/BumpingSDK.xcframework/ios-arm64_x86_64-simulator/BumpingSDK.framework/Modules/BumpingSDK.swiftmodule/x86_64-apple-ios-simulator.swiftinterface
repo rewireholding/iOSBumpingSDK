@@ -1,0 +1,136 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BumpingSDK
+import AVFoundation
+@_exported import BumpingSDK
+import CoreNFC
+import Foundation
+import Security
+import Swift
+import UIKit
+import _Concurrency
+public protocol BumpingDelegate : AnyObject {
+  func resultOK(transactionId: Swift.String, code: Swift.Int)
+  func resultKO(errorMssg: Swift.String, code: Swift.Int)
+  func operationStatus(status: BumpingSDK.BumpingTxStatus)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class BumpingManager : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: BumpingSDK.BumpingDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension BumpingSDK.BumpingManager : CoreNFC.NFCTagReaderSessionDelegate {
+  @_Concurrency.MainActor(unsafe) public func tagReaderSessionDidBecomeActive(_ session: CoreNFC.NFCTagReaderSession)
+  @_Concurrency.MainActor(unsafe) public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didInvalidateWithError error: Swift.Error)
+  @_Concurrency.MainActor(unsafe) public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didDetect tags: [CoreNFC.NFCTag])
+}
+public let bumpingManager: BumpingSDK.BumpingManager
+@_hasMissingDesignatedInitializers final public class Bumping {
+  public static let shared: BumpingSDK.Bumping
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func setAppLicense(_ license: Swift.String) async -> (result: Swift.Result<Swift.Void, BumpingSDK.BumpingError>, code: Swift.Int)
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func registerUser(name: Swift.String, surname: Swift.String, email: Swift.String, address: Swift.String, bankAccount: Swift.String, bankIdentifier: Swift.String, country: Swift.String, currency: Swift.String) async -> (result: Swift.Result<Swift.String, BumpingSDK.BumpingError>, code: Swift.Int)
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func setCommercial(_ isCommercial: Swift.Bool, userId: Swift.String) async -> (result: Swift.Result<Swift.Void, BumpingSDK.BumpingError>, code: Swift.Int)
+  #endif
+
+  @_Concurrency.MainActor final public func doOperation(userId: Swift.String, amount: Swift.Double? = nil, currency: Swift.String? = nil, operationCode: BumpingSDK.BumpingOperationType, roleType: BumpingSDK.BumpingRoleType, transactionId: Swift.String? = nil, summary: Swift.String? = nil, messageNFC: BumpingSDK.MessageNFC? = nil)
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func checkOperationStatus(id: Swift.String) async -> (result: Swift.Result<BumpingSDK.BumpingTxStatus, BumpingSDK.BumpingError>, code: Swift.Int)
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func getTransactionInfo(id: Swift.String) async -> (result: Swift.Result<BumpingSDK.BumpingTransactionInfo, BumpingSDK.BumpingError>, code: Swift.Int)
+  #endif
+
+  
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func cancelOperation(id: Swift.String) async -> (result: Swift.Result<Swift.Void, BumpingSDK.BumpingError>, code: Swift.Int)
+  #endif
+
+  @objc deinit
+}
+public struct BumpingTransactionInfo : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MessageNFC {
+}
+public enum BumpingDeviceOS : Swift.String, Swift.Codable {
+  case ANDROID, IOS
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum BumpingRoleType : Swift.String, Swift.Codable {
+  case SENDER, RECEIVER
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum BumpingOperationType : Swift.String, Swift.Codable {
+  case BUMPING
+  case BUMPING_QR
+  case BUMPING_TT
+  case BUMPING_TT_QR
+  case BUMPING_TT_REFUND
+  case BUMPING_TT_QR_REFUND
+  case ATM
+  case ATM_QR
+  case ATM_REFUND
+  case ATM_QR_REFUND
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum BumpingTxStatus : Swift.String, Swift.Codable {
+  case DRAFT
+  case VALIDATED
+  case EXECUTED
+  case FAILED
+  case CANCELLED
+  case REJECTED
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum BumpingError : Swift.Error {
+  case general(Swift.Error)
+  case badURL
+  case notExpectedResponse
+  case notExpectedData(Swift.Error)
+  case expectedMssg(Swift.String)
+  case noLicense
+  case noUsernameId
+}
+extension BumpingSDK.BumpingDeviceOS : Swift.Equatable {}
+extension BumpingSDK.BumpingDeviceOS : Swift.Hashable {}
+extension BumpingSDK.BumpingDeviceOS : Swift.RawRepresentable {}
+extension BumpingSDK.BumpingRoleType : Swift.Equatable {}
+extension BumpingSDK.BumpingRoleType : Swift.Hashable {}
+extension BumpingSDK.BumpingRoleType : Swift.RawRepresentable {}
+extension BumpingSDK.BumpingOperationType : Swift.Equatable {}
+extension BumpingSDK.BumpingOperationType : Swift.Hashable {}
+extension BumpingSDK.BumpingOperationType : Swift.RawRepresentable {}
+extension BumpingSDK.BumpingTxStatus : Swift.Equatable {}
+extension BumpingSDK.BumpingTxStatus : Swift.Hashable {}
+extension BumpingSDK.BumpingTxStatus : Swift.RawRepresentable {}
