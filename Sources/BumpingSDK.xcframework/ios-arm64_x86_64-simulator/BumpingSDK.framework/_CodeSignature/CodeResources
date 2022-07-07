@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/BumpingSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		CjSiO8aOfgXPxW5JsUEzkR+oODM=
+		7r9kDZ7GztrAs4tKHvjSncMIYqI=
 		</data>
 		<key>Modules/BumpingSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		swK+qTToDSRAFJEm0t3EPcgROmc=
+		vLTRlBkFGCcKa0QtAlRRod7GL7k=
 		</data>
 		<key>Modules/BumpingSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/BumpingSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		UtW4ixFcSI0b66ha2I59/7PzQ9g=
+		dwTBwDOc0htNELP/JlV07FxDneI=
 		</data>
 		<key>Modules/BumpingSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		VxJpb6WawN9aq7ymwBuPwP2Nb9M=
+		rls8eFOflO1Lza20cGr99CDs6Ng=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LEtyCprDpP9XZYIDVRRclrkytrQIMgEXxTR+S3UZGIM=
+			KMH4Eop0vxt15kNwgNFHq+jKk2dlNn4FIoOm8ooD5rY=
 			</data>
 		</dict>
 		<key>Modules/BumpingSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7c0rs0RKlqGn/rqim6z4kRi7t33g1igChSh5D0tgeGc=
+			Xzfujwm3drbC3KivPYDRW0F7ItFSk5wQib/lB4m8gUs=
 			</data>
 		</dict>
 		<key>Modules/BumpingSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WNzKRDgu3pO/f3jMgJI3NAVNmOb7yyD9pMlgHQTYGIo=
+			salu+rZoDdYG4P17n+xzuEFE3DxNI/D3IsEU0YAm9/Q=
 			</data>
 		</dict>
 		<key>Modules/BumpingSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			blhCUmxUqcLDl1ftL1Z7Hd2MPtqsQFaMb/p+eLsSRnA=
+			mp47Vt5+TDlloRAVbzNAoskvoNNjyWIsYLB8hn4n9zk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

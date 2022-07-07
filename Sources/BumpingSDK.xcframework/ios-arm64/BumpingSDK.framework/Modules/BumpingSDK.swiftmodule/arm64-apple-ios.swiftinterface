@@ -10,7 +10,7 @@ import Swift
 import UIKit
 import _Concurrency
 public protocol BumpingDelegate : AnyObject {
-  func resultOK(transactionId: Swift.String, code: Swift.Int)
+  func resultOK(transactionId: Swift.String)
   func resultKO(errorMssg: Swift.String, code: Swift.Int)
   func operationStatus(status: BumpingSDK.BumpingTxStatus)
 }
@@ -62,10 +62,18 @@ public let bumpingManager: BumpingSDK.BumpingManager
   @objc deinit
 }
 public struct BumpingTransactionInfo : Swift.Codable {
+  public var amount: Swift.Double
+  public var currency: Swift.String
+  public let operationType: BumpingSDK.BumpingOperationType
+  public let deviceOs: BumpingSDK.BumpingDeviceOS
+  public let roleType: BumpingSDK.BumpingRoleType
+  public init(amount: Swift.Double, currency: Swift.String, operationType: BumpingSDK.BumpingOperationType, deviceOs: BumpingSDK.BumpingDeviceOS, roleType: BumpingSDK.BumpingRoleType)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
 public struct MessageNFC {
+  public let mssgInitial: Swift.String?, mssgOK: Swift.String?, mssgKO: Swift.String?
+  public init(mssgInitial: Swift.String? = nil, mssgOK: Swift.String? = nil, mssgKO: Swift.String? = nil)
 }
 public enum BumpingDeviceOS : Swift.String, Swift.Codable {
   case ANDROID, IOS
@@ -120,7 +128,6 @@ public enum BumpingError : Swift.Error {
   case notExpectedData(Swift.Error)
   case expectedMssg(Swift.String)
   case noLicense
-  case noUsernameId
 }
 extension BumpingSDK.BumpingDeviceOS : Swift.Equatable {}
 extension BumpingSDK.BumpingDeviceOS : Swift.Hashable {}
